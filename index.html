@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TEAM 369 CYBER Custom SMS</title>
+	<style type="text/css">body {
+            font-family: 'Arial', sans-serif;
+            background-color: skyblue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .sms-container {
+            text-align: center;
+            background-color: red;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        @media(max-width: 600px) {
+            form {
+                width: 90%;
+            }
+        }
+	</style>
+</head>
+<body>
+<div class="sms-container">
+<h1>TEAM 369 CYBER CASTOM SMS</h1>
+
+<form id="bomber-form"><label for="phone-number">Enter Number:</label> <input id="phone-number" name="phone-number" required="" type="text" /><br />
+<label for="message">Your Message:</label><textarea cols="50" id="message" name="message" required="" rows="4"></textarea><br />
+<button type="submit">Send SMS</button></form>
+</div>
+<script>
+        document.getElementById('bomber-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var phoneNumber = document.getElementById('phone-number').value;
+            var message = document.getElementById('message').value;
+
+            var smsBomberUrl = 'https://teamblackberry.xyz/tbbcastomsms.php?number=' + phoneNumber + '&message=' + message;
+
+            fetch(smsBomberUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert('SMS sent successfully!');
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while sending the SMS. Please try again later.');
+                });
+        });
+    </script></body>
+</html>
